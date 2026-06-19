@@ -1,0 +1,587 @@
+/* ==========================================================================
+   Fathima Balika Muslim Maha Vidyalaya — Environmental Project Showcase
+   Custom styles beyond Tailwind CDN
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Page load transition (< 400ms)
+   -------------------------------------------------------------------------- */
+#page-root {
+  opacity: 0;
+  will-change: opacity;
+}
+
+#page-root.page-loaded {
+  opacity: 1;
+  transition: opacity 0.35s ease-out;
+}
+
+/* --------------------------------------------------------------------------
+   Back to top button
+   -------------------------------------------------------------------------- */
+.back-to-top {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 40;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #D4A24E;
+  color: #1B4332;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(212, 162, 78, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 12px, 0);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.2s ease;
+  will-change: opacity, transform;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+}
+
+.back-to-top:hover {
+  background: #B8873A;
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid #1B4332;
+  outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .back-to-top {
+    bottom: 1.75rem;
+    right: 1.75rem;
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Image fallback placeholder (broken image replacement)
+   -------------------------------------------------------------------------- */
+.img-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #2D6A4F 0%, #1B4332 100%);
+  color: rgba(248, 246, 240, 0.4);
+  min-height: 3rem;
+}
+
+.img-fallback svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.img-fallback--cover {
+  width: 100%;
+  height: 100%;
+  min-height: 8rem;
+}
+
+.ba-slider .img-fallback--cover {
+  position: absolute;
+  inset: 0;
+  min-height: 12rem;
+}
+
+.img-fallback--logo {
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Custom scrollbar — forest green theme
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F6F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1B4332;
+  border-radius: 9999px;
+  border: 2px solid #F8F6F0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2D6A4F;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1B4332 #F8F6F0;
+}
+
+/* --------------------------------------------------------------------------
+   Fade-in-up animation (IntersectionObserver-friendly)
+   Elements start hidden; .visible triggers the animation.
+   -------------------------------------------------------------------------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.animate-fade-up.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+/* Staggered children inside a fade-in section */
+.fade-in-section .stagger-child {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-section.visible .stagger-child {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+.fade-in-section.visible .stagger-child:nth-child(1) { transition-delay: 0.05s; }
+.fade-in-section.visible .stagger-child:nth-child(2) { transition-delay: 0.1s; }
+.fade-in-section.visible .stagger-child:nth-child(3) { transition-delay: 0.15s; }
+.fade-in-section.visible .stagger-child:nth-child(4) { transition-delay: 0.2s; }
+.fade-in-section.visible .stagger-child:nth-child(5) { transition-delay: 0.25s; }
+.fade-in-section.visible .stagger-child:nth-child(6) { transition-delay: 0.3s; }
+
+/* --------------------------------------------------------------------------
+   Card hover lift
+   -------------------------------------------------------------------------- */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.hover-lift:hover {
+  transform: translate3d(0, -6px, 0);
+  box-shadow: 0 12px 28px -8px rgba(27, 67, 50, 0.18);
+}
+
+/* --------------------------------------------------------------------------
+   Organic decorative accents
+   -------------------------------------------------------------------------- */
+.leaf-accent {
+  pointer-events: none;
+  position: absolute;
+  opacity: 0.08;
+  color: #1B4332;
+}
+
+.leaf-accent--top-right {
+  top: -1rem;
+  right: -1rem;
+  width: 120px;
+  height: 120px;
+}
+
+.leaf-accent--bottom-left {
+  bottom: -1rem;
+  left: -1rem;
+  width: 100px;
+  height: 100px;
+}
+
+/* Soft card shadow used across the site */
+.card-shadow {
+  box-shadow: 0 4px 20px -4px rgba(27, 67, 50, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   Sticky nav — forest green on scroll
+   -------------------------------------------------------------------------- */
+#site-header {
+  transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+#site-header.header-scrolled {
+  background-color: rgba(27, 67, 50, 0.92);
+  border-color: rgba(116, 165, 127, 0.25);
+  box-shadow: 0 4px 24px -4px rgba(15, 46, 34, 0.35);
+}
+
+#site-header.header-scrolled .nav-school-name,
+#site-header.header-scrolled .nav-subtitle {
+  color: #F8F6F0;
+}
+
+#site-header.header-scrolled .nav-link {
+  color: #F8F6F0;
+}
+
+#site-header.header-scrolled .nav-link:hover {
+  color: #D4A24E;
+  background-color: rgba(248, 246, 240, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   Hero — gradient & floating leaves
+   -------------------------------------------------------------------------- */
+.hero-gradient {
+  background: linear-gradient(165deg, #F8F6F0 0%, #EDE9DF 45%, rgba(116, 165, 127, 0.35) 100%);
+}
+
+.floating-leaf {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.12;
+  color: #1B4332;
+  will-change: transform;
+}
+
+.floating-leaf--1 {
+  width: 60px;
+  height: 60px;
+  top: 12%;
+  left: 5%;
+  animation: floatLeaf1 18s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .floating-leaf--1 {
+    width: 80px;
+    height: 80px;
+    left: 8%;
+  }
+}
+
+.floating-leaf--2 {
+  width: 45px;
+  height: 45px;
+  top: 25%;
+  right: 5%;
+  animation: floatLeaf2 22s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .floating-leaf--2 {
+    width: 60px;
+    height: 60px;
+    right: 12%;
+  }
+}
+
+.floating-leaf--3 {
+  width: 70px;
+  height: 70px;
+  bottom: 18%;
+  left: 8%;
+  animation: floatLeaf3 20s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .floating-leaf--3 {
+    width: 100px;
+    height: 100px;
+    left: 15%;
+    bottom: 20%;
+  }
+}
+
+.floating-leaf--4 {
+  width: 50px;
+  height: 50px;
+  bottom: 28%;
+  right: 5%;
+  animation: floatLeaf1 25s ease-in-out infinite reverse;
+}
+
+@media (min-width: 768px) {
+  .floating-leaf--4 {
+    width: 70px;
+    height: 70px;
+    right: 8%;
+    bottom: 30%;
+  }
+}
+
+@keyframes floatLeaf1 {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  33% { transform: translate3d(18px, -24px, 0) rotate(8deg); }
+  66% { transform: translate3d(-12px, 16px, 0) rotate(-5deg); }
+}
+
+@keyframes floatLeaf2 {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-20px, 20px, 0) rotate(12deg); }
+}
+
+@keyframes floatLeaf3 {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-3deg); }
+  40% { transform: translate3d(24px, 12px, 0) rotate(6deg); }
+  80% { transform: translate3d(-16px, -18px, 0) rotate(-8deg); }
+}
+
+/* Scroll-down indicator */
+.scroll-indicator {
+  left: 50%;
+  animation: scrollBounce 2s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translate3d(-50%, 0, 0); opacity: 0.7; }
+  50% { transform: translate3d(-50%, 8px, 0); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   Stats bar
+   -------------------------------------------------------------------------- */
+.stat-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   Places grid cards — staggered reveal
+   -------------------------------------------------------------------------- */
+.places-grid > .place-card {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out, box-shadow 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.places-grid > .place-card.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+/* Before/after thumbnail strip */
+.thumb-pair img {
+  transition: transform 0.4s ease;
+}
+
+.place-card:hover .thumb-pair img {
+  transform: scale(1.03);
+}
+
+/* --------------------------------------------------------------------------
+   Before / After comparison slider (place detail page)
+   -------------------------------------------------------------------------- */
+.ba-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px -8px rgba(27, 67, 50, 0.2);
+  cursor: col-resize;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ba-slider__before {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+/* After image sits on top, clipped to reveal only the right portion */
+.ba-slider__after-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  clip-path: inset(0 0 0 var(--split, 50%));
+  will-change: clip-path;
+}
+
+.ba-slider__after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+/* Vertical divider line + draggable handle (transform-only for 60fps) */
+.ba-slider__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: #fff;
+  transform: translate3d(calc(var(--split-px, 0px) - 1.5px), 0, 0);
+  z-index: 10;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.ba-slider.is-dragging .ba-slider__handle {
+  will-change: transform;
+}
+
+.ba-slider__grip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #1B4332;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 16px rgba(27, 67, 50, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  will-change: transform;
+  pointer-events: auto;
+}
+
+.ba-slider:active .ba-slider__grip,
+.ba-slider.is-dragging .ba-slider__grip {
+  transform: translate3d(-50%, -50%, 0) scale(1.08);
+  box-shadow: 0 6px 20px rgba(27, 67, 50, 0.45);
+}
+
+/* Corner labels */
+.ba-slider__label {
+  position: absolute;
+  top: 0.75rem;
+  z-index: 5;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(15, 46, 34, 0.72);
+  backdrop-filter: blur(4px);
+  padding: 0.3rem 0.6rem;
+  border-radius: 9999px;
+  pointer-events: none;
+  max-width: 45%;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .ba-slider__label {
+    top: 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    padding: 0.35rem 0.75rem;
+    max-width: none;
+  }
+}
+
+.ba-slider__label--before {
+  left: 1rem;
+}
+
+.ba-slider__label--after {
+  right: 1rem;
+}
+
+/* Team member chips */
+.team-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  background: rgba(116, 165, 127, 0.12);
+  border: 1px solid rgba(116, 165, 127, 0.3);
+  color: #1B4332;
+}
+
+/* Place detail header entrance */
+.place-header {
+  opacity: 0;
+}
+
+.place-header.visible {
+  animation: fadeInUp 0.7s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive refinements (375 / 768 / 1440)
+   -------------------------------------------------------------------------- */
+@media (max-width: 374px) {
+  .hero-gradient {
+    min-height: auto;
+    padding-bottom: 4rem;
+  }
+
+  #stats .stat-value {
+    font-size: 1.75rem;
+  }
+
+  #stats .stagger-child p:last-child {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  #places-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .max-w-6xl {
+    max-width: 72rem;
+  }
+
+  .max-w-5xl {
+    max-width: 64rem;
+  }
+
+  .max-w-3xl {
+    max-width: 48rem;
+  }
+}

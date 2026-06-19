@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="View before-and-after transformations and meet the team behind each environmental project location at Fathima Balika Muslim Maha Vidyalaya." />
+  <title>Place Details | Environmental Project</title>
+
+  <!-- Open Graph / Social sharing (title/description/image updated by place.js) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Fathima Balika Muslim Maha Vidyalaya" />
+  <meta property="og:title" content="Place Details | Environmental Project" id="og-title" />
+  <meta property="og:description" content="Environmental project location details — Fathima Balika Muslim Maha Vidyalaya, Muruthagahamula, Kandy." id="og-description" />
+  <meta property="og:image" content="assets/images/After_ENV_01.png" data-relative="assets/images/After_ENV_01.png" id="og-image" />
+  <meta property="og:url" content="" id="og-url" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Place Details | Environmental Project" id="twitter-title" />
+  <meta name="twitter:description" content="Environmental project location details at Fathima Balika Muslim Maha Vidyalaya." id="twitter-description" />
+  <meta name="twitter:image" content="assets/images/After_ENV_01.png" data-relative="assets/images/After_ENV_01.png" id="twitter-image" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/Logo.png" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              DEFAULT: '#1B4332',
+              light: '#2D6A4F',
+              dark: '#0F2E22',
+            },
+            sage: {
+              DEFAULT: '#74A57F',
+              light: '#95C4A0',
+              dark: '#5A8A66',
+            },
+            amber: {
+              DEFAULT: '#D4A24E',
+              light: '#E4BC72',
+              dark: '#B8873A',
+            },
+            cream: {
+              DEFAULT: '#F8F6F0',
+              dark: '#EDE9DF',
+            },
+          },
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="font-body bg-cream text-forest antialiased min-h-screen flex flex-col">
+
+<div id="page-root">
+
+  <!-- ========== Sticky Navigation (matches index.html) ========== -->
+  <header id="site-header" class="sticky top-0 z-50 bg-cream/80 backdrop-blur-md border-b border-sage/20">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3 group min-w-0">
+        <img
+          src="assets/images/Logo.png"
+          alt="Fathima Balika Muslim Maha Vidyalaya logo"
+          class="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-contain bg-cream ring-2 ring-sage/40 ring-offset-2 ring-offset-cream shrink-0 group-hover:ring-amber/60 transition-all p-0.5"
+          width="48"
+          height="48"
+          onerror="handleImageError(this, 'logo')"
+        />
+        <div class="leading-tight min-w-0">
+          <span class="nav-school-name font-heading font-bold text-forest text-xs sm:text-sm md:text-base block truncate group-hover:text-forest-light transition-colors">
+            Fathima Balika Muslim Maha Vidyalaya
+          </span>
+          <span class="nav-subtitle text-xs text-sage-dark hidden sm:block">Environmental Project Showcase</span>
+        </div>
+      </a>
+      <a
+        href="index.html#places"
+        class="nav-link text-sm font-medium text-forest hover:text-amber transition-colors px-4 py-2 rounded-full hover:bg-sage/10 shrink-0 flex items-center gap-1.5"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+        <span class="hidden sm:inline">Back to All Places</span>
+        <span class="sm:hidden">All Places</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ========== Dynamic content injected by place.js ========== -->
+  <main class="flex-1" id="place-content">
+  </main>
+
+  <!-- ========== Footer ========== -->
+  <footer class="bg-forest-dark text-cream mt-auto">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-10">
+      <div class="flex items-center justify-center gap-4 mb-10" aria-hidden="true">
+        <span class="h-px flex-1 max-w-[120px] bg-sage/30"></span>
+        <svg class="w-8 h-8 text-sage/50" viewBox="0 0 32 32" fill="currentColor">
+          <path d="M16 4C10 10 6 16 8 24c4-1 7-4 9-8 2 4 5 7 9 8 2-8-2-14-8-20h-2z"/>
+        </svg>
+        <span class="h-px flex-1 max-w-[120px] bg-sage/30"></span>
+      </div>
+      <div class="text-center">
+        <p class="font-heading font-bold text-lg sm:text-xl text-cream">Fathima Balika Muslim Maha Vidyalaya</p>
+        <p class="text-cream/60 text-sm mt-2">Muruthagahamula, Kandy · Central Province, Sri Lanka</p>
+        <p class="text-cream/40 text-xs mt-6">Environmental Project Showcase &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
+    </svg>
+  </button>
+
+</div><!-- /#page-root -->
+
+  <script src="data/places.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/place.js"></script>
+</body>
+</html>
