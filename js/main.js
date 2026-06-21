@@ -170,19 +170,17 @@ function initFadeInObserver(options = {}) {
  * @param {Array} places
  */
 function computeStats(places) {
-  const students = new Set();
   const teachers = new Set();
   const oga = new Set();
 
   places.forEach((place) => {
-    (place.students || []).forEach((s) => students.add(s));
     (place.teachers || []).forEach((t) => teachers.add(t));
     (place.ogaMembers || []).forEach((o) => oga.add(o));
   });
 
   return {
     locations: places.length,
-    students: students.size,
+    students: 500,
     teachers: teachers.size,
     oga: oga.size,
   };
@@ -223,8 +221,8 @@ function initStatsCounters(places) {
   const statEls = statsSection.querySelectorAll('[data-stat]');
 
   const targets = {
-    locations: { value: stats.locations, suffix: '+' },
-    students: { value: stats.students, suffix: '' },
+    locations: { value: stats.locations, suffix: '' },
+    students: { value: stats.students, suffix: '+' },
     teachers: { value: stats.teachers, suffix: '' },
     oga: { value: stats.oga, suffix: '' },
   };
@@ -266,6 +264,16 @@ function initStatsCounters(places) {
  * @param {Object} place
  * @param {number} index - Used for stagger delay
  */
+function buildGradeBadges(grades) {
+  if (!grades || !grades.length) return '';
+  return `<div class="flex flex-wrap gap-1.5 mb-3">${grades
+    .map(
+      (grade) =>
+        `<span class="inline-block bg-forest/10 text-forest font-heading font-semibold text-[11px] sm:text-xs px-2.5 py-0.5 rounded-full">${escapeHtml(grade)}</span>`
+    )
+    .join('')}</div>`;
+}
+
 function buildPlaceCard(place, index) {
   const delay = (index * 0.08).toFixed(2);
   const href = `place.html?id=${place.id}`;
@@ -312,6 +320,7 @@ function buildPlaceCard(place, index) {
         <h3 class="font-heading font-bold text-lg sm:text-xl text-forest group-hover:text-forest-light transition-colors mb-1.5 line-clamp-2">
           ${escapeHtml(place.placeName)}
         </h3>
+        ${buildGradeBadges(place.grades)}
         <p class="text-sage-dark text-sm flex items-center gap-1.5 mb-5">
           <svg class="w-3.5 h-3.5 shrink-0 opacity-70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
